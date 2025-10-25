@@ -18,20 +18,24 @@ jobs:
         with:
           update: true
           install: >-
+            zip
             mingw-w64-x86_64-toolchain
             mingw-w64-x86_64-cmake
             mingw-w64-x86_64-qt6-base
             mingw-w64-x86_64-qt6-tools
+
       - name: Build (Qt6 / MinGW)
         run: |
           export PATH=/mingw64/bin:$PATH
-          mkdir build-win && cd build-win
+          mkdir -p build-win && cd build-win
           cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release
           cmake --build . -j
           mkdir -p package && cp ColorLab7.exe package/
-          windeployqt --release package/ColorLab7.exe
+          # Qt6 工具名称是 windeployqt6（注意这个 6）
+          windeployqt6 --release package/ColorLab7.exe
           cd package
-          /usr/bin/zip -r ../ColorLab7-win64.zip .
+          zip -r ../ColorLab7-win64.zip .
+
       - uses: actions/upload-artifact@v4
         with:
           name: ColorLab7-win64
