@@ -1,0 +1,36 @@
+# CMake / build
+build/
+build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.moc
+*.qrc.dep
+
+# Qt / IDE
+*.user
+*.pro.user
+*.autosave
+*.qmlproject.user
+*.creator*
+*.pro.user*
+*.workspace
+*.kdev4
+*.vscode/
+
+# Binaries
+*.exe
+*.dll
+*.dll.a
+*.lib
+*.pdb
+*.o
+*.obj
+*.so
+*.a
+*.zip
+
+# OS junk
+.DS_Store
+Thumbs.db
